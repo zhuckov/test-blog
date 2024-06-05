@@ -7,9 +7,17 @@ body {
 }
 * {
   box-sizing: border-box;
+  color: black;
+  margin: 0;
+}
+a {
+  text-decoration: none;
 }
 
 .main-container {
+  width: 100vw;
+}
+.container {
   max-width: 1140px;
   width: 90%;
   margin: 0 auto;
