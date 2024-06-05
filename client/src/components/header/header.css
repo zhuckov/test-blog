@@ -24,3 +24,11 @@ a {
   color: rgb(56, 56, 56);
   font-weight: 500;
 }
+
+.log-out {
+  color: rgb(136, 136, 136);
+}
+.log-out:hover {
+  color: rgb(56, 56, 56);
+  font-weight: 500;
+}

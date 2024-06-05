@@ -16,16 +16,14 @@ const LoginPage = ({}) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitted username:", username);
-    console.log("Submitted password:", password);
     setUsername("");
     setPassword("");
   };
   return (
     <div className="login-form">
-      <h2>Login</h2>
+      <h2>Вход </h2>
       <form action="#" method="POST" onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Логин</label>
         <input
           type="text"
           value={username}
@@ -36,7 +34,7 @@ const LoginPage = ({}) => {
           required
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Пароль</label>
         <input
           type="password"
           id="password"
@@ -48,10 +46,10 @@ const LoginPage = ({}) => {
         />
 
         <button type="submit" disabled={error ? true : false}>
-          Login
+          Войти
         </button>
         <a className="login-link" href="/registration">
-          You don't have an account? Sign up now.
+          У вас еще нету аккаунта? Зарегестрируйтесь сейчас.
         </a>
       </form>
     </div>

@@ -1,7 +1,7 @@
 import "./logo.css";
 export const Logo = () => {
   return (
-    <svg className="logo" id="Layer_1" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <svg className="logo" id="Layer_1" enableBackground="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
       <g id="XMLID_1144_">
         <path id="XMLID_1134_" d="m58 111h-48v327h222c13.255 0 24 10.745 24 24 0-13.255 10.745-24 24-24h222v-327h-48.042z" fill="#ff9171" />
         <path id="XMLID_1136_" d="m58 215.667v161.333h154c24.301 0 44 19.699 44 44v-327c0-24.301-19.699-44-44-44h-154v169z" fill="#fff" />
