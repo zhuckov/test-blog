@@ -28,3 +28,27 @@ export const getPosts = async ({ limit, page }: getQueryProps) => {
   const data = await response.json();
   return data;
 };
+
+export const deletePost = async (formData: FormData) => {
+  const response = await fetch(`${Config.serverUrl}/delete_post.php`, {
+    method: "POST",
+    body: formData,
+  });
+  if (!response.ok) {
+    throw new Error("Ошибка при удалении товара");
+  }
+};
+
+export const getPostByUserLogin = async (formData: FormData) => {
+  const response = await fetch(`${Config.serverUrl}/get_users_post.php`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка при получении постов пользователя");
+  }
+
+  const data = await response.json();
+  return data;
+};
