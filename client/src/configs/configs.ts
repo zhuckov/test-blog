@@ -1,3 +1,3 @@
 export const Config = {
-  serverUrl: "http://server/register.php/",
+  serverUrl: "http://server",
 };

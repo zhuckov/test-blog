@@ -2,13 +2,17 @@ import React, { createContext, useContext, useState } from "react";
 
 interface IContext {
   isAuth: boolean;
+  userLogin: string | null;
+  setUserLogin: React.Dispatch<React.SetStateAction<string | null>>;
   setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const AuthContext = createContext<IContext | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
-  return <AuthContext.Provider value={{ isAuth, setIsAuth }}>{children}</AuthContext.Provider>;
+  const [userLogin, setUserLogin] = useState<string | null>(null);
+
+  return <AuthContext.Provider value={{ isAuth, setIsAuth, userLogin, setUserLogin }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = (): IContext => {

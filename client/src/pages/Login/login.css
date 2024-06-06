@@ -49,3 +49,18 @@
 .login-link:hover {
   color: #3c3b3b;
 }
+.error {
+  width: 100%;
+  display: flex;
+  padding: 6px 0;
+  align-items: center;
+  justify-content: center;
+}
+.error-text {
+  font-size: 14px;
+  color: red;
+}
+.login-button {
+  font-size: 14px;
+  font-weight: 500;
+}

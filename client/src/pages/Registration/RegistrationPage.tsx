@@ -1,12 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { createUser } from "../../services/user";
 import "./registration.css";
+import { useAuth } from "../../context/AuthContext";
 
 const RegistrationPage = ({}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPass, setRepeatPass] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const { setIsAuth } = useAuth();
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -21,13 +23,21 @@ const RegistrationPage = ({}) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (repeatPass == password && password.length >= 8 && username.length != 0) {
+    if (repeatPass != password) {
+      setError("Пароли не совпадают");
+    } else if (password.length < 8) {
+      setError("Длина пароля менее 8 символов");
+    } else if (username.length <= 3) {
+      setError("Имя пользователя должно быть более трех символов");
+    } else {
       createUser({
         login: username,
         password: password,
       })
         .then((data) => {
-          console.log("User created:", data);
+          setIsAuth(true);
+          setUsername(username);
+          resetData();
         })
         .catch((error: Error) => {
           setError(error.message);
@@ -38,6 +48,7 @@ const RegistrationPage = ({}) => {
     setUsername("");
     setPassword("");
     setRepeatPass("");
+    setError(null);
   };
   return (
     <div className="login-form">
@@ -76,7 +87,7 @@ const RegistrationPage = ({}) => {
           required
         />
 
-        <button type="submit" className="register-button" disabled={error ? true : false}>
+        <button type="submit" className="register-button">
           Зарегестрироваться
         </button>
         {error != null && (

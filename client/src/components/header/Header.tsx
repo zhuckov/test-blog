@@ -4,7 +4,7 @@ import { Logo } from "../ui/icons/logo/Logo";
 import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
-  const { isAuth } = useAuth();
+  const { isAuth, setIsAuth } = useAuth();
   return (
     <div className="header-wrapper">
       <header className="header container">
@@ -14,7 +14,14 @@ const Header = () => {
             Записи
           </NavLink>
           {isAuth ? (
-            <a className="log-out">Выйти</a>
+            <>
+              <NavLink to="/create-post" className={({ isActive }) => (isActive ? "active" : "")}>
+                Создать пост
+              </NavLink>
+              <a className="log-out" onClick={() => setIsAuth(false)}>
+                Выйти
+              </a>
+            </>
           ) : (
             <>
               <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>
