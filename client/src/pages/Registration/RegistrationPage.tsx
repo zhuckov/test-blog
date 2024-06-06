@@ -8,7 +8,7 @@ const RegistrationPage = ({}) => {
   const [password, setPassword] = useState("");
   const [repeatPass, setRepeatPass] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const { setIsAuth } = useAuth();
+  const { setIsAuth, setUserLogin } = useAuth();
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -35,8 +35,8 @@ const RegistrationPage = ({}) => {
         password: password,
       })
         .then((data) => {
+          setUserLogin(username);
           setIsAuth(true);
-          setUsername(username);
           resetData();
         })
         .catch((error: Error) => {

@@ -5,6 +5,7 @@ import LoginPage from "./pages/Login/LoginPage";
 import Header from "./components/header/Header";
 import { useAuth } from "./context/AuthContext";
 import CreatePostPage from "./pages/CreatePost/CreatePost";
+import MyPostsPage from "./pages/MyPosts/MyPostsPage";
 
 const App = () => {
   const { isAuth } = useAuth();
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/registration" element={isAuth ? <Navigate to="/" replace /> : <RegistrationPage />} />
           <Route path="/login" element={isAuth ? <Navigate to="/" replace /> : <LoginPage />} />
           <Route path="/create-post" element={!isAuth ? <Navigate to="/login" replace /> : <CreatePostPage />} />
+          <Route path="/my-posts" element={!isAuth ? <Navigate to="/login" replace /> : <MyPostsPage />} />
         </Routes>
       </div>
     </div>

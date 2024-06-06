@@ -18,6 +18,9 @@ const Header = () => {
               <NavLink to="/create-post" className={({ isActive }) => (isActive ? "active" : "")}>
                 Создать пост
               </NavLink>
+              <NavLink to="/my-posts" className={({ isActive }) => (isActive ? "active" : "")}>
+                Мои посты
+              </NavLink>
               <a className="log-out" onClick={() => setIsAuth(false)}>
                 Выйти
               </a>

@@ -1,6 +1,8 @@
 import { Config } from "../configs/configs";
-import { IPost } from "../types/types";
-
+interface getQueryProps {
+  limit: number;
+  page: number;
+}
 export const createPost = async (formData: FormData) => {
   const response = await fetch(`${Config.serverUrl}/create_post.php`, {
     method: "POST",
@@ -11,5 +13,18 @@ export const createPost = async (formData: FormData) => {
   if (!response.ok) {
     throw new Error(data.error);
   }
+  return data;
+};
+
+export const getPosts = async ({ limit, page }: getQueryProps) => {
+  const response = await fetch(`${Config.serverUrl}/get_posts.php/?page=${page}&limit=${limit}`, {
+    method: "GET",
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка при получении постов");
+  }
+
+  const data = await response.json();
   return data;
 };

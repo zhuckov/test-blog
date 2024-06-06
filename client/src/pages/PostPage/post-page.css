@@ -1,9 +1,115 @@
 .post-page__image {
   width: 100%;
   object-fit: cover;
+  height: 400px;
+  margin-top: 20px;
 }
 .post-page__title {
   font-size: 32px;
   font-weight: 400;
   margin: 24px 0;
+}
+.post-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.posts-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-item h2 {
+  margin: 0;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 28px;
+  letter-spacing: 0.6px;
+  color: #333;
+}
+.content-text {
+  font-size: 20px;
+}
+
+.post-item p {
+  margin: 5px 0;
+  color: #555;
+}
+.post-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 16px;
+}
+.posts-count {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.about-post span {
+  font-weight: 600;
+}
+.about-post {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.about-post p {
+  display: flex;
+  gap: 12px;
+  margin: 0 !important;
+  font-size: 16px;
+}
+.pagination-panel {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+}
+.paggination-button {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background: #4caf50;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.paggination-button:disabled {
+  border: 2px solid black;
+}
+
+.control-panel {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.control-panel input:focus-visible {
+  outline: none;
+}
+
+.search-params {
+  padding: 4px 12px;
+}
+
+.info-text {
+  font-size: 20px !important;
 }
