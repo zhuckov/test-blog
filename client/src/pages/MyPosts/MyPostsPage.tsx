@@ -32,9 +32,6 @@ const MyPostsPage = () => {
     };
     fetchPosts();
   }, [userLogin]);
-  // const updateHandler = ({id, title , content}) => {
-
-  // };
 
   const removeHandler = async (id: number) => {
     try {

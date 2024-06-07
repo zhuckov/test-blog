@@ -66,3 +66,15 @@ export const updatePost = async (formData: FormData) => {
   const data = await response.json();
   return data;
 };
+
+export const updatePassword = async (formData: FormData) => {
+  const response = await fetch(`${Config.serverUrl}/update_password.php`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка при обновлении пароля");
+  }
+  console.log("Пароль успешно обновлен");
+};

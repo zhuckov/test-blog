@@ -15,6 +15,13 @@
   display: block;
   margin-bottom: 8px;
 }
+.success-pass-reset {
+  width: 100%;
+  margin: 20px 0;
+  color: #45a049;
+  font-size: 14px;
+  text-align: center;
+}
 .login-form input:focus-visible {
   outline: none;
 }
