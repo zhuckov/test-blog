@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { deletePost, getPostByUserLogin } from "../../services/post";
 import { useAuth } from "../../context/AuthContext";
 import "./myposts.css";
+import UpdateForm, { IPostUpdate } from "../UpdateForm/UpdateForm";
+import UserPost from "../../components/userPost/UserPost";
 
-interface IPost {
+export interface IPostCatalog {
   id: number;
   title: string;
   author_login: string;
@@ -12,7 +14,8 @@ interface IPost {
 }
 
 const MyPostsPage = () => {
-  const [posts, setPosts] = useState<IPost[]>([]);
+  const [posts, setPosts] = useState<IPostCatalog[]>([]);
+
   const { userLogin } = useAuth();
   useEffect(() => {
     const fetchPosts = async () => {
@@ -29,48 +32,25 @@ const MyPostsPage = () => {
     };
     fetchPosts();
   }, [userLogin]);
+  // const updateHandler = ({id, title , content}) => {
 
-  const removeHandler = (id: number) => {
-    const removePostData = new FormData();
-    removePostData.append("id", id.toString());
-    deletePost(removePostData);
-    setPosts(posts.filter((post) => post.id != id));
+  // };
+
+  const removeHandler = async (id: number) => {
+    try {
+      const removePostData = new FormData();
+      removePostData.append("id", id.toString());
+      await deletePost(removePostData);
+      setPosts(posts.filter((post) => post.id !== id));
+    } catch (error) {
+      console.error("Failed to delete post:", error);
+    }
   };
-  return posts && posts.length ? (
-    <section className="post-catalog">
-      {posts.map((post) => (
-        <div key={post.id} className="post-item">
-          <div className="post-info">
-            <div className="about-post">
-              <p className="info-text">
-                <span>Автор:</span>{" "}
-                {post.author_login && post.author_login.length > 1
-                  ? post.author_login.slice(0, 1).toUpperCase() + post.author_login.slice(1, post.author_login.length)
-                  : post.author_login}
-              </p>
-              <p className="info-text">
-                <span>Дата поста:</span> {post.created_at}
-              </p>
-            </div>
-          </div>
-          <h2>{post.title}</h2>
-          <p className="content-text">{post.content}</p>
 
-          <div className="post-buttons">
-            <button
-              onClick={() => {
-                removeHandler(post.id);
-              }}
-            >
-              Удалить
-            </button>
-            <button>Редактировать</button>
-          </div>
-        </div>
-      ))}
+  return (
+    <section className="post-catalog">
+      {posts && posts.map((post) => <UserPost key={post.id} {...post} removeHandler={removeHandler} />)}
     </section>
-  ) : (
-    <p className="not-post">У вас еще нету постов.</p>
   );
 };
 

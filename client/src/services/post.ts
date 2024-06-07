@@ -52,3 +52,17 @@ export const getPostByUserLogin = async (formData: FormData) => {
   const data = await response.json();
   return data;
 };
+
+export const updatePost = async (formData: FormData) => {
+  const response = await fetch(`${Config.serverUrl}/update_post.php`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка при обновлении поста");
+  }
+
+  const data = await response.json();
+  return data;
+};
