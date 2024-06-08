@@ -37,7 +37,6 @@ const PostsPage = ({}) => {
       </div>
       <h1 className="post-page__title">Посты на сайте:</h1>
       <p className="posts-count">Найдено постов: {totalPosts}</p>
-      <p className="posts-count">Текущая страница : {page}</p>
       <div className="control-panel">
         Выводим записей на странице:
         <input className="search-params" type="text" onChange={(e) => handlerLimitChange(e)} />
