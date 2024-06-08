@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { deletePost, getPostByUserLogin } from "../../services/post";
 import { useAuth } from "../../context/AuthContext";
 import "./myposts.css";
-import UpdateForm, { IPostUpdate } from "../UpdateForm/UpdateForm";
 import UserPost from "../../components/userPost/UserPost";
+import { Link } from "react-router-dom";
 
 export interface IPostCatalog {
   id: number;
@@ -47,6 +47,14 @@ const MyPostsPage = () => {
   return (
     <section className="post-catalog">
       {posts && posts.map((post) => <UserPost key={post.id} {...post} removeHandler={removeHandler} />)}
+      {!posts.length && (
+        <div className="no-posts">
+          <p className="no-posts__text">У вас еще нету постов</p>
+          <Link to="/create-post" className="no-posts__button">
+            Нажмите что бы создать пост
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

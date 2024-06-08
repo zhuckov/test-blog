@@ -32,8 +32,23 @@ const PostsPage = ({}) => {
   };
   return (
     <div className="post-page__container">
+      <h2 className="post-page__h2">ContentCrafter</h2>
+      <p className="post-page__description">
+        ContentCrafter – это инновационная платформа, созданная для творческих людей, стремящихся делиться своими идеями, мыслями и
+        историями. В нашем цифровом пространстве каждый может найти своё место и выразить себя, будь то через текст, фото или видео.
+        ContentCrafter – это место, где контент становится искусством.
+      </p>
       <div className="post-page__inner">
         <img className="post-page__image" src="/posts.jpg" aria-label="post page" alt="post page image" />
+      </div>
+      <h2 className="post-page__h2">Миссия</h2>
+      <p className="post-page__description">
+        Миссия ContentCrafter – создать уникальное сообщество людей, увлечённых созданием качественного контента. Мы верим, что каждый
+        человек обладает уникальной историей, которая заслуживает быть рассказанной. Наша цель – предоставить всем пользователям удобные и
+        мощные инструменты для создания, публикации и продвижения их работ.
+      </p>
+      <div className="post-page__inner">
+        <img className="post-page__image" src="/posts2.jpg" aria-label="post page" alt="post page image" />
       </div>
       <h1 className="post-page__title">Посты на сайте:</h1>
       <p className="posts-count">Найдено постов: {totalPosts}</p>

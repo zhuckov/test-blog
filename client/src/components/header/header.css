@@ -32,3 +32,9 @@ a {
   color: rgb(56, 56, 56);
   font-weight: 500;
 }
+
+@media screen and (max-width: 600px) {
+  .header {
+    font-size: 14px;
+  }
+}
